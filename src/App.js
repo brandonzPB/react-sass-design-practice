@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 
-import { SignUpContainer } from './components/SignUpContainer/SignUpContainer';
+import { api } from './services/api';
+import { Dummy } from './components/Dummy/Dummy';
 import { FormProgress } from './components/FormProgress/FormProgress';
 import { Loading } from './components/Loading/Loading';
 import { LoginForm } from './components/LoginForm/LoginForm';
+import { SignUpContainer } from './components/SignUpContainer/SignUpContainer';
 
 const initialState = {
   email: '',
   name: '',
   password: '',
   userType: '',
-};
-
-// used to "verify" credentials
-const USER_API = {
-  email: '',
-  name: '',
-  password: '',
-  userType: ''
 };
 
 function App() {
@@ -33,10 +27,10 @@ function App() {
 
   // SIGN UP
   const signUp = (form) => {
-    USER_API.email = form.email;
-    USER_API.name = form.name;
-    USER_API.password = form.password;
-    USER_API.userType = form.userType;
+    api.email = form.email;
+    api.name = form.name;
+    api.password = form.password;
+    api.userType = form.userType;
 
     // continue to step 2
     setAuthStep(step => step + 1);
@@ -48,9 +42,9 @@ function App() {
 
     let error = null;
 
-    if (USER_API.email !== credentials.email) {
+    if (api.email !== credentials.email) {
       error = 'email error';
-    } else if (USER_API.password !== credentials.password) {
+    } else if (api.password !== credentials.password) {
       error = 'password error';
     }
 
@@ -86,24 +80,30 @@ function App() {
 
   return (
     <div className="App">
-      <div id="head">
-        <FormProgress authStep={authStep} />
+      <div id="left__container">
+        <div id="head">
+          <FormProgress authStep={authStep} />
+        </div>
+
+        <div id="body">
+          {
+            authStep === 1
+              ? <>
+              {
+                loading.status
+                  ? <Loading />
+                  : <SignUpContainer signUp={signUp} skipToLogin={skipToLogin} />
+              }
+              </>
+              : authStep === 2
+                ? <LoginForm login={login} />
+                : <></>
+          }
+        </div>
       </div>
 
-      <div id="body">
-        {
-          authStep === 1
-            ? <>
-            {
-              loading.status
-                ? <Loading />
-                : <SignUpContainer signUp={signUp} skipToLogin={skipToLogin} />
-            }
-            </>
-            : authStep === 2
-              ? <LoginForm login={login} />
-              : <></>
-        }
+      <div id="right__container">
+        <Dummy />
       </div>
     </div>
   );
