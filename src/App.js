@@ -7,6 +7,8 @@ import { Loading } from './components/Loading/Loading';
 import { LoginForm } from './components/LoginForm/LoginForm';
 import { SignUpContainer } from './components/SignUpContainer/SignUpContainer';
 
+import './scss/style.scss';
+
 const initialState = {
   email: '',
   name: '',
@@ -88,15 +90,15 @@ function App() {
         <div id="body">
           {
             authStep === 1
-              ? <>
-              {
-                loading.status
-                  ? <Loading />
-                  : <SignUpContainer signUp={signUp} skipToLogin={skipToLogin} />
-              }
-              </>
+              ? <SignUpContainer signUp={signUp} skipToLogin={skipToLogin} />
               : authStep === 2
-                ? <LoginForm login={login} />
+                ? <>
+                  {
+                    loading.status
+                      ? <Loading />
+                      : <LoginForm login={login} />
+                  }
+                </>
                 : <></>
           }
         </div>
