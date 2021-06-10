@@ -1,18 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 import { SignUpForm } from '../SignUpForm/SignUpForm';
 
 import './signUpContainer.scss';
 
 const FormContainer = ({ signUp, skipToLogin }) => {
-  const formRef = useRef(true);
-
-  useEffect(() => {
-    return () => {
-      formRef.current = false;
-    }
-  }, []);
-
   // ACCEPT TERMS AND POLICY
   const showConfirmation = () => {
     window.confirm('Click OK to agree');

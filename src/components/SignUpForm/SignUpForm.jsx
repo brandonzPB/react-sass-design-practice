@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useForm } from '../../hooks/useForm';
 
@@ -15,6 +15,14 @@ const SignUpForm = ({ signUp }) => {
   const [form, setForm, handleChange] = useForm(initialValues);
   const [emailError, setEmailError] = useState({ flag: false });
   const [submit, setSubmit] = useState({ disabled: true });
+
+  const signupRef = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      signupRef.current = false;
+    }
+  }, []);
 
   // enables submit button once every field is completed
   useEffect(() => {
@@ -44,12 +52,14 @@ const SignUpForm = ({ signUp }) => {
 
     signUp(form);
 
-    setForm({
-      name: '',
-      email: '',
-      userType: '',
-      password: ''
-    });
+    if (signupRef.current) {
+      setForm({
+        name: '',
+        email: '',
+        userType: '',
+        password: ''
+      });
+    }
   }
 
   return (

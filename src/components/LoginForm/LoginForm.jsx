@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useForm } from '../../hooks/useForm';
 
@@ -12,6 +12,14 @@ const initialValues = {
 const LoginForm = ({ login }) => {
   const [form, setForm, handleChange] = useForm(initialValues);
   const [error, setError] = useState({ field: '' });
+
+  const loginRef = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      loginRef.current = false;
+    }
+  }, []);
 
   // SUBMIT FORM
   const handleSubmit = (event) => {
@@ -27,10 +35,12 @@ const LoginForm = ({ login }) => {
         : setError({ field: 'password' });
     }
 
-    setForm({
-      email: '',
-      password: ''
-    });
+    if (loginRef.current) {
+      setForm({
+        email: '',
+        password: ''
+      });
+    }
   }
 
   return (

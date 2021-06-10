@@ -46,10 +46,21 @@ function App() {
   const login = (credentials) => {
     setLoading({ status: true });
 
-    if (USER_API.email !== credentials.email) return;
+    let error = null;
 
-    if (USER_API.password !== credentials.password) return;
+    if (USER_API.email !== credentials.email) {
+      error = 'email error';
+    } else if (USER_API.password !== credentials.password) {
+      error = 'password error';
+    }
 
+    if (error) {
+      setLoading({ status: false });
+      return error;
+    }
+
+    // correct credentials: login and...
+    // continue to next authStep
     setTimeout(() => {
       setUser({
         email: credentials.email,
@@ -62,6 +73,8 @@ function App() {
       setAuthStep(step => step + 1);
 
       setLoading({ status: false });
+
+      return 'success';
     }, 1500);
   }
 
