@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  background-image: url('./assets/images/rocket.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
