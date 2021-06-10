@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { SignUpForm } from '../SignUpForm/SignUpForm';
 
-const FormContainer = () => {
+const FormContainer = ({ signUp }) => {
+  const formRef = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      formRef.current = false;
+    }
+  }, []);
+
   return (
     <div className="form-container">
       <span id="form-header">
@@ -20,7 +28,7 @@ const FormContainer = () => {
         </span>
       </div>
 
-      <SignUpForm />
+      <SignUpForm signUp={signUp} />
 
       <div id="terms__container">
         <span id="terms-text">

@@ -2,8 +2,6 @@ import React from 'react';
 
 import { useForm } from '../../hooks/useForm';
 
-
-
 const initialValues = {
   name: '',
   email: '',
@@ -11,11 +9,13 @@ const initialValues = {
   password: ''
 };
 
-const SignUpForm = () => {
+const SignUpForm = ({ signUp }) => {
   const [form, setForm, handleChange] = useForm(initialValues);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    signUp(form);
 
     setForm({
       name: '',
@@ -42,6 +42,18 @@ const SignUpForm = () => {
         type="email"
         value={form.email}
       />
+
+      <select
+        name="userType"
+        onChange={handleChange}
+        value={form.userType}
+      >
+        <option value="" disabled={true}>I would describe my user type as</option>
+        <option value="employee">Employee</option>
+        <option value="employer">Employer</option>
+        <option value="student">Student</option>
+        <option value="other">Other</option>
+      </select>
 
       <input
         name="password"
