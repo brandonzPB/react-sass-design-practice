@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 
 import { SignUpForm } from '../SignUpForm/SignUpForm';
 
-const FormContainer = ({ signUp }) => {
+import './signUpContainer.scss';
+
+const FormContainer = ({ signUp, skipToLogin }) => {
   const formRef = useRef(true);
 
   useEffect(() => {
@@ -10,6 +12,11 @@ const FormContainer = ({ signUp }) => {
       formRef.current = false;
     }
   }, []);
+
+  // ACCEPT TERMS AND POLICY
+  const showConfirmation = () => {
+    window.confirm('Click OK to agree');
+  }
 
   return (
     <div className="form-container">
@@ -21,9 +28,9 @@ const FormContainer = ({ signUp }) => {
         <span id="sign-in-text">
 
           Already have an account?
-          <a href="#" >
+          <span onClick={skipToLogin}>
             Sign in
-          </a>
+          </span>
 
         </span>
       </div>
@@ -36,13 +43,13 @@ const FormContainer = ({ signUp }) => {
           By clicking the "Next" button, you agree 
           to creating a free account, and to 
 
-          <a href="#">
+          <span onClick={showConfirmation}>
             Terms of Service
-          </a>
+          </span>
           and
-          <a href="#">
+          <span onClick={showConfirmation}>
             Privacy Policy.
-          </a>
+          </span>
 
         </span>
       </div>

@@ -1,19 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useForm } from '../../hooks/useForm';
 
+import './signUpForm.scss';
+
 const initialValues = {
-  name: '',
   email: '',
+  name: '',
+  password: '',
   userType: '',
-  password: ''
 };
 
 const SignUpForm = ({ signUp }) => {
   const [form, setForm, handleChange] = useForm(initialValues);
+  const [emailError, setEmailError] = useState({ flag: false });
+  const [submit, setSubmit] = useState({ disabled: true });
 
+  // enables submit button once every field is completed
+  useEffect(() => {
+
+    if (form.email.trim()    &&
+        form.name.trim()     &&
+        form.password.trim() &&
+        form.userType.trim()
+    ) {
+      setSubmit({ disabled: false });
+    } else {
+      // disables submit button if a field is empty
+      setSubmit({ disabled: true });
+    }
+    
+  }, [form, setSubmit]);
+
+  // SUBMIT FORM
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setEmailError({ flag: false });
+
+    if (!form.email.includes('@')) {
+      return setEmailError({ flag: true });
+    }
 
     signUp(form);
 
@@ -26,7 +53,7 @@ const SignUpForm = ({ signUp }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="signup-form" onSubmit={handleSubmit}>
       <input
         name="name"
         onChange={handleChange}
@@ -39,9 +66,14 @@ const SignUpForm = ({ signUp }) => {
         name="email"
         onChange={handleChange}
         placeholder="Email address"
+        style={{
+          backgroundColor: emailError.flag ? 'pink' : 'white'
+        }}
         type="email"
         value={form.email}
       />
+
+      {emailError.flag && <span className="error-text">Please enter a valid email.</span>}
 
       <select
         name="userType"
@@ -63,6 +95,8 @@ const SignUpForm = ({ signUp }) => {
         value={form.password}
       />
       <span id="password-info">Minimum 8 characters</span>
+      
+      <button disabled={submit.disabled}>Next</button>
     </form>
   )
 }

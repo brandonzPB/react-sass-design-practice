@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import { FormContainer } from './components/FormContainer';
-import { FormProgress } from './components/FormProgress';
+import { SignUpContainer } from './components/SignUpContainer/SignUpContainer';
+import { FormProgress } from './components/FormProgress/FormProgress';
+import { Loading } from './components/Loading/Loading';
 import { LoginForm } from './components/LoginForm';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   userType: '',
 };
 
+// used to "verify" credentials
 const USER_API = {
   email: '',
   name: '',
@@ -23,15 +25,24 @@ function App() {
   const [loading, setLoading] = useState({ status: false });
   const [authStep, setAuthStep] = useState(1);
 
+  // SKIP SIGN UP; GO TO LOGIN
+  const skipToLogin = () => {
+    // continue to step 2
+    setAuthStep(step => step + 1);
+  }
+
+  // SIGN UP
   const signUp = (form) => {
     USER_API.email = form.email;
     USER_API.name = form.name;
     USER_API.password = form.password;
     USER_API.userType = form.userType;
 
+    // continue to step 2
     setAuthStep(step => step + 1);
   }
 
+  // LOGIN
   const login = (credentials) => {
     setLoading({ status: true });
 
@@ -47,10 +58,17 @@ function App() {
         userType: credentials.userType
       });
       
+      // continue to step 3
       setAuthStep(step => step + 1);
 
       setLoading({ status: false });
     }, 1500);
+  }
+
+  // COMPLETE AUTHENTICATION PROCESS
+  const completeAuth = () => {
+    // set authStep to 4 (completed step 3)
+    setAuthStep(step => step + 1);
   }
 
   return (
@@ -61,9 +79,17 @@ function App() {
 
       <div id="body">
         {
-          loading.status
-            ? <Loading />
-            : <FormContainer signUp={signUp} />
+          authStep === 1
+            ? <>
+            {
+              loading.status
+                ? <Loading />
+                : <SignUpContainer signUp={signUp} skipToLogin={skipToLogin} />
+            }
+            </>
+            : authStep === 2
+              ? <LoginForm login={login} />
+              : <></>
         }
       </div>
     </div>
