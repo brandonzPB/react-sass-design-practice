@@ -13,7 +13,7 @@ const initialValues = {
 
 const SignUpForm = ({ signUp }) => {
   const [form, setForm, handleChange] = useForm(initialValues);
-  const [emailError, setEmailError] = useState({ flag: false });
+  const [error, setError] = useState({ field: '' });
   const [submit, setSubmit] = useState({ disabled: true });
 
   const signupRef = useRef(true);
@@ -44,10 +44,12 @@ const SignUpForm = ({ signUp }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setEmailError({ flag: false });
+    setError({ field: '' });
 
     if (!form.email.includes('@')) {
-      return setEmailError({ flag: true });
+      return setError({ field: 'email' });
+    } else if (form.password.length < 8) {
+      return setError({ field: 'password' });
     }
 
     signUp(form);
@@ -77,13 +79,13 @@ const SignUpForm = ({ signUp }) => {
         onChange={handleChange}
         placeholder="Email address"
         style={{
-          backgroundColor: emailError.flag ? 'pink' : 'white'
+          backgroundColor: error.field === 'email' ? 'pink' : 'white'
         }}
         type="email"
         value={form.email}
       />
 
-      {emailError.flag && <span className="error-text">Please enter a valid email.</span>}
+      {error.field === 'email' && <span className="error-text">Please enter a valid email.</span>}
 
       <select
         name="userType"
@@ -104,6 +106,9 @@ const SignUpForm = ({ signUp }) => {
         type="password"
         value={form.password}
       />
+      
+      {error.field === 'password' && <span className="error-text">Password must be at least 8 characters</span>}
+      
       <span id="password-info">Minimum 8 characters</span>
       
       <button disabled={submit.disabled}>Next</button>

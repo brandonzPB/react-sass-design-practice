@@ -4,7 +4,7 @@ import { SignUpForm } from '../SignUpForm/SignUpForm';
 
 import './signUpContainer.scss';
 
-const FormContainer = ({ signUp, skipToLogin }) => {
+const SignUpContainer = ({ signUp, skipToLogin }) => {
   // ACCEPT TERMS AND POLICY
   const showConfirmation = () => {
     window.confirm('Click OK to agree');
@@ -19,7 +19,7 @@ const FormContainer = ({ signUp, skipToLogin }) => {
       <div id="sign-in-text__container">
         <span id="sign-in-text">
 
-          Already have an account?
+          Already have an account?&nbsp;
           <span onClick={skipToLogin}>
             Sign in
           </span>
@@ -33,12 +33,12 @@ const FormContainer = ({ signUp, skipToLogin }) => {
         <span id="terms-text">
 
           By clicking the "Next" button, you agree 
-          to creating a free account, and to 
+          to creating a free account, and to&nbsp;
 
           <span onClick={showConfirmation}>
-            Terms of Service
+            Terms of Service&nbsp;
           </span>
-          and
+          and&nbsp;
           <span onClick={showConfirmation}>
             Privacy Policy.
           </span>
@@ -49,4 +49,4 @@ const FormContainer = ({ signUp, skipToLogin }) => {
   )
 }
 
-export { FormContainer };
+export { SignUpContainer };

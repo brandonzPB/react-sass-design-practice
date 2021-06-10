@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SignUpContainer } from './components/SignUpContainer/SignUpContainer';
 import { FormProgress } from './components/FormProgress/FormProgress';
 import { Loading } from './components/Loading/Loading';
-import { LoginForm } from './components/LoginForm';
+import { LoginForm } from './components/LoginForm/LoginForm';
 
 const initialState = {
   email: '',
