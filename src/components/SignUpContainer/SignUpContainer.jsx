@@ -9,15 +9,15 @@ const SignUpContainer = ({ signUp, skipToLogin }) => {
   const showConfirmation = () => {
     window.confirm('Click OK to agree');
   }
-
+  
   return (
-    <div className="form-container">
+    <div className="form__container">
       <span id="form-header">
         Let's set up your account
       </span>
       
-      <div id="sign-in-text__container">
-        <span id="sign-in-text">
+      <div id="sign-in-question__container">
+        <span id="sign-in-question">
 
           Already have an account?&nbsp;
           <span onClick={skipToLogin}>

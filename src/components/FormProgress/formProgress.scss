@@ -1,18 +1,19 @@
 #progress__container {
 
   #progress-content {
-    float: right;
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    font-size: 0.6rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(46, 46, 46);
     margin: 0.75rem auto;
   }
   
   span {
+    margin-left: 2rem;
   }
 
   ul {
@@ -23,6 +24,38 @@
   }
 
   li {
-    margin: 0 2rem 0 -1.5rem;
+    margin: 0 2rem 0 -1.25rem;
   }
+}
+
+
+@media only screen and (min-width: 920px) {
+  #progress__container {
+
+    #progress-content {
+      float: right;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      font-size: 0.5rem;
+      font-weight: 500;
+      margin: 2rem auto;
+    }
+    
+    span {
+    }
+  
+    ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    li {
+      margin: 0 2rem 0 -1.5rem;
+    }
+  }  
 }

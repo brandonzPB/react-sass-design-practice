@@ -1,0 +1,66 @@
+.form__container {
+  margin: 0 auto;
+}
+
+#form-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'Araboto', sans-serif;
+}
+
+#sign-in-question__container {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#sign-in-question {
+  font-size: 1.1rem;
+
+  span {
+    display: block;
+    margin: 0.5rem auto;
+    text-align: center;
+    transition: all ease-in-out 150ms;
+    font-size: 1.25rem;
+    color: #286EFA;
+
+    &:hover {
+      color: #00D1F7;
+      cursor: pointer;
+    }
+  }
+}
+
+#terms__container {
+  margin: 1rem auto;
+}
+
+#terms-text {
+  font-size: 0.75rem;
+
+  span {
+    color: #286EFA;
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  .form__container {
+    margin: 2rem auto;
+    width: 60%;
+  }
+
+  #sign-in-question {
+
+    span {
+      text-align: left;
+    }
+  }
+
+  #terms-text {
+    font-size: 0.5rem;
+    font-weight: 400;
+  }
+}

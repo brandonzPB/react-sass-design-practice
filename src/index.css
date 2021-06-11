@@ -12,8 +12,23 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'Araboto';
+  src: url('./assets/fonts/araboto/Araboto-Normal.ttf') format('ttf');
+}
+
 html {
   background-image: url('./assets/images/rocket.jpg');
   background-size: cover;
+  background-position: center;
   background-attachment: fixed;
+}
+
+@media only screen and (min-width: 920px) {
+  html {
+    background-image: url('./assets/images/rocket.jpg');
+    background-size: cover;
+    background-position: initial;
+    background-attachment: fixed;
+  }
 }
