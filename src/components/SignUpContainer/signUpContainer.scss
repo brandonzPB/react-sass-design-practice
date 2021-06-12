@@ -50,13 +50,15 @@
 @media only screen and (min-width: 920px) {
   .form__container {
     margin: 2.25rem auto;
-    width: 60%;
+    width: 55%;
   }
 
   #sign-in-question {
     font-size: 0.65rem;
     font-weight: 300;
     text-align: left;
+    margin: 1rem 0;
+    margin-right: 7rem;
 
     span {
       text-align: left;

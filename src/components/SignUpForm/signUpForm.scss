@@ -1,0 +1,60 @@
+form {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background: none;
+
+  .input {
+    width: 100%;
+    border: none;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    background: none;
+    background-color: transparent;
+    margin: 0.25rem auto 1rem auto;
+    font-family: 'Araboto', sans-serif;
+    font-size: 0.65rem;
+    padding: 0.5rem;
+  }
+
+  select {
+    width: 106%;
+    border: none;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    background: none;
+    margin: 0.25rem auto 1rem auto;
+    font-family: 'Araboto', sans-serif;
+    font-size: 0.65rem;
+    padding: 0.5rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  option {
+    width: 100%;
+  }
+
+  span {
+    font-size: 0.52rem;
+    font-weight: 200;
+    position: relative;
+    top: -0.75rem;
+    left: -5.75rem;
+  }
+
+  button {
+    width: 100%;
+    border: none;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    margin: 0.25rem auto 1rem auto;
+    background-color: #EDEDED;
+    font-size: 0.55rem;
+    font-weight: 900;
+    padding: 0.5rem 0;
+  }
+}
+
+.error-text {}
