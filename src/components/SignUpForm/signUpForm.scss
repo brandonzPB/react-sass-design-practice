@@ -23,7 +23,7 @@ form {
   }
 
   select {
-    width: 106%;
+    width: 122%;
     border: none;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
     background: none;
@@ -32,6 +32,8 @@ form {
     font-size: 0.65rem;
     padding: 0.5rem;
     color: rgba(0, 0, 0, 0.5);
+
+    &::after {}
   }
 
   option {
@@ -47,15 +49,24 @@ form {
   }
 
   button {
-    width: 100%;
+    width: 123%;
     border: none;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
     margin: 0.25rem auto 1rem auto;
     background-color: #EDEDED;
     font-size: 0.55rem;
     font-weight: 900;
-    padding: 0.5rem 0;
+    padding: 0.7rem 0;
   }
 }
 
 .error-text {}
+
+#password-input {
+  &::after {
+    content: '👁';
+    font-size: 1rem;
+    position: relative;
+    top: 0;
+  }
+}

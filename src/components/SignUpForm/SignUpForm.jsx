@@ -103,6 +103,7 @@ const SignUpForm = ({ signUp }) => {
 
       <input
         className="input"
+        id="password-input"
         name="password"
         onChange={handleChange}
         placeholder="Password"
