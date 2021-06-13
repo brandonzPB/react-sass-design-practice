@@ -7,12 +7,14 @@ const Dummy = () => {
     <div id="dummy__container">
       <h1>Dummy Heading</h1>
       
-      <span>
-        Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna
-        aliqua.
-      </span>
+      <div id="dummy-content__container">
+        <span>
+          Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna
+          aliqua.
+        </span>
+      </div>
     </div>
   )
 }
