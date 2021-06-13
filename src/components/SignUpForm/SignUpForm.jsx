@@ -77,11 +77,12 @@ const SignUpForm = ({ signUp }) => {
 
       <input
         className="input"
+        id="email-input"
         name="email"
         onChange={handleChange}
         placeholder="Email address"
         style={{
-          backgroundColor: error.field === 'email' ? 'pink' : 'white'
+          backgroundColor: error.field === 'email' ? 'pink' : 'none',
         }}
         type="email"
         value={form.email}
@@ -107,6 +108,9 @@ const SignUpForm = ({ signUp }) => {
         name="password"
         onChange={handleChange}
         placeholder="Password"
+        style={{
+          backgroundColor: error.field === 'password' ? 'pink' : 'none',
+        }}
         type="password"
         value={form.password}
       />
