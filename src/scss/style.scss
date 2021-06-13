@@ -20,7 +20,10 @@
   background-color: #F9F9F9;
   height: auto;
   padding: 2rem 0 4rem 0;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 50px 100px -20px rgba(50,50,93,.25),0 30px 60px -30px rgba(0,0,0,.3);
 
   #head {
@@ -33,7 +36,6 @@
     height: 80%;
     margin: 0 auto;
     width: 85%;
-    padding-right: 4rem;
   }
 }
 
@@ -73,6 +75,7 @@
     #body {
       display: block;
       height: 80%;
+      padding-right: 4rem;
     }
   }
   
@@ -84,3 +87,54 @@
     color: white;
   }
 }
+
+/*
+.App {
+  @include c.flexCenter(row);
+
+  margin: 0 auto;
+  width: 95%;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#left__container {
+  margin: 2rem auto;
+  border-radius: 4px;
+  width: 90%;
+  background-color: #F9F9F9;
+  height: auto;
+  padding: 2rem 0 4rem 0;
+  display: block;
+  box-shadow: 0 50px 100px -20px rgba(50,50,93,.25),0 30px 60px -30px rgba(0,0,0,.3);
+
+  #head {
+    height: 20%;
+    display: block;
+  }
+
+  #body {
+    display: block;
+    height: 80%;
+    margin: 0 auto;
+    width: 85%;
+    padding-right: 4rem;
+  }
+}
+
+#right__container {
+  margin: 0 auto;
+  border-radius: 4px;
+  width: 90%;
+  background-color: #286EFA;
+  height: auto;
+  padding: 2rem 0;
+  display: block;
+  box-shadow: 0 50px 100px -20px rgba(50,50,93,.25),0 30px 60px -30px rgba(0,0,0,.3);
+  color: white;
+}
+*/
