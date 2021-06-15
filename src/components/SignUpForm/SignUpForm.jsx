@@ -16,6 +16,7 @@ const SignUpForm = ({ signUp }) => {
   const [form, setForm, handleChange] = useForm(initialValues);
   const [error, setError] = useState({ field: '' });
   const [submit, setSubmit] = useState({ disabled: true });
+  const [passwordDisplay, setPasswordDisplay] = useState({ hidden: true });
 
   const signupRef = useRef(true);
 
@@ -65,6 +66,11 @@ const SignUpForm = ({ signUp }) => {
     }
   }
 
+  // TOGGLE PASSWORD DISPLAY
+  const togglePasswordDisplay = () => {
+    setPasswordDisplay({ hidden: !passwordDisplay.hidden });
+  }
+
   return (
     <form id="signup-form" onSubmit={handleSubmit}>
       <input
@@ -104,19 +110,24 @@ const SignUpForm = ({ signUp }) => {
       </select>
 
       <div id="password-input__container">
-      <input
-        className="input"
-        id="password-input"
-        name="password"
-        onChange={handleChange}
-        placeholder="Password"
-        style={{
-          backgroundColor: error.field === 'password' ? 'pink' : 'none',
-        }}
-        type="password"
-        value={form.password}
-      />
-      <GoEye id="eye-icon" />
+        <input
+          className="input"
+          id="password-input"
+          name="password"
+          onChange={handleChange}
+          placeholder="Password"
+          style={{
+            backgroundColor: error.field === 'password' ? 'pink' : 'none',
+          }}
+          type={
+            passwordDisplay.hidden ? 'password' : 'text'
+          }
+          value={form.password}
+        />
+        <GoEye 
+          id="eye-icon" 
+          onClick={togglePasswordDisplay}
+        />
       </div>
       
       {error.field === 'password' && <span className="error-text">Password must be at least 8 characters</span>}
