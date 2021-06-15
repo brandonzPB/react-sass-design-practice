@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { GoEye } from 'react-icons/go';
 
 import { useForm } from '../../hooks/useForm';
 
@@ -102,6 +103,7 @@ const SignUpForm = ({ signUp }) => {
         <option value="other">Other</option>
       </select>
 
+      <div id="password-input__container">
       <input
         className="input"
         id="password-input"
@@ -114,6 +116,8 @@ const SignUpForm = ({ signUp }) => {
         type="password"
         value={form.password}
       />
+      <GoEye id="eye-icon" />
+      </div>
       
       {error.field === 'password' && <span className="error-text">Password must be at least 8 characters</span>}
       

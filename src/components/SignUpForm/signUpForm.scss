@@ -63,12 +63,16 @@ form {
 
 .error-text {}
 
-#password-input {
-  &::after {
-    content: '👁';
-    font-size: 1rem;
+#password-input__container {
+  width: 100%;
+
+  input {
+  }
+
+  #eye-icon {
     position: relative;
-    top: 0;
+    right: -7rem;
+    top: -2.5rem;
   }
 }
 
@@ -136,13 +140,15 @@ form {
   }
   
   .error-text {}
-  
-  #password-input {
-    &::after {
-      content: '👁';
-      font-size: 1rem;
-      position: relative;
-      top: 0;
+}
+
+@media only screen and (min-width: 750px) {
+  #password-input__container {
+    input {}
+
+    #eye-icon {
+      right: -11rem;
+      font-size: 0.6rem;
     }
   }
 }
