@@ -12,6 +12,7 @@ const initialValues = {
 const LoginForm = ({ login }) => {
   const [form, setForm, handleChange] = useForm(initialValues);
   const [error, setError] = useState({ field: '' });
+  const [loading, setLoading] = useState({ staus: false });
 
   const loginRef = useRef(true);
 
@@ -24,6 +25,8 @@ const LoginForm = ({ login }) => {
   // SUBMIT FORM
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setLoading({ status: true });
 
     setError({ field: '' });
 
@@ -40,12 +43,18 @@ const LoginForm = ({ login }) => {
         email: '',
         password: ''
       });
+
+      setLoading({ status: false });
     }
   }
 
   return (
     <div id="login__container">
-      <span id="login-header">Great! Now let's get you logged in</span>
+      {
+        loading.status
+          ? <span className="login-header">Logging in...</span>
+          : <span className="login-header">Great! Now let's get you logged in</span>
+      }
 
       <form onSubmit={handleSubmit}>
         <input

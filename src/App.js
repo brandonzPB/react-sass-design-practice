@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { API } from './services/api';
 import { Dummy } from './components/Dummy/Dummy';
 import { FormProgress } from './components/FormProgress/FormProgress';
-import { Loading } from './components/Loading/Loading';
 import { LoginForm } from './components/LoginForm/LoginForm';
 import { SignUpContainer } from './components/SignUpContainer/SignUpContainer';
 import { Welcome } from './components/Welcome/Welcome';
@@ -19,7 +18,6 @@ const initialState = {
 
 function App() {
   const [user, setUser] = useState(initialState);
-  const [loading, setLoading] = useState({ status: false });
   const [authStep, setAuthStep] = useState(1);
   const [api, setApi] = useState(initialState);
 
@@ -46,8 +44,6 @@ function App() {
 
   // LOGIN
   const login = (credentials) => {
-    setLoading({ status: true });
-
     let error = null;
 
     if (credentials.email !== api.email) {
@@ -57,7 +53,6 @@ function App() {
     }
 
     if (error) {
-      setLoading({ status: false });
       return error;
     }
 
@@ -74,8 +69,6 @@ function App() {
       
       // continue to step 3
       setAuthStep(step => step + 1);
-
-      setLoading({ status: false });
 
       return 'success';
     }, 1500);
@@ -94,11 +87,7 @@ function App() {
               ? <SignUpContainer signUp={signUp} skipToLogin={skipToLogin} />
               : authStep === 2
                 ? <>
-                  {
-                    loading.status
-                      ? <Loading />
-                      : <LoginForm login={login} />
-                  }
+                  <LoginForm login={login} />
                 </>
                 : <Welcome user={user} />
           }
