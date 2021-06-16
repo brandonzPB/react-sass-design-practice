@@ -1,0 +1,74 @@
+#login__container {
+  form {
+    margin: 2rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      width: 90%;
+      border: none;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+      background: none;
+      background-color: transparent;
+      margin: 0.25rem auto 1rem auto;
+      font-family: 'Araboto', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.03rem;
+      padding: 0.60rem;
+    }
+
+    .error-text {}
+
+    button {
+      margin: 2rem auto 0 auto;
+      background-color: #286EFA;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  #login__container {
+    width: 60%;
+    margin: 2rem auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    #login-header {
+      margin: 0 auto;
+      text-align: left;
+      font-weight: 800;
+      font-family: 'Araboto', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    form {
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  
+      input {
+        background: none;
+        font-size: 0.62rem;
+      }
+  
+      .error-text {}
+  
+      button {
+        font-size: 0.75rem;
+        margin: 2rem auto;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+}

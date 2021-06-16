@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-import { api } from './services/api';
+import { API } from './services/api';
 import { Dummy } from './components/Dummy/Dummy';
 import { FormProgress } from './components/FormProgress/FormProgress';
 import { Loading } from './components/Loading/Loading';
 import { LoginForm } from './components/LoginForm/LoginForm';
 import { SignUpContainer } from './components/SignUpContainer/SignUpContainer';
+import { Welcome } from './components/Welcome/Welcome';
 
 import './scss/style.scss';
 
@@ -20,6 +21,7 @@ function App() {
   const [user, setUser] = useState(initialState);
   const [loading, setLoading] = useState({ status: false });
   const [authStep, setAuthStep] = useState(1);
+  const [api, setApi] = useState(initialState);
 
   // SKIP SIGN UP; GO TO LOGIN
   const skipToLogin = () => {
@@ -29,10 +31,14 @@ function App() {
 
   // SIGN UP
   const signUp = (form) => {
-    api.email = form.email;
-    api.name = form.name;
-    api.password = form.password;
-    api.userType = form.userType;
+    const userApi = new API(form);
+
+    setApi({
+      email: userApi.email,
+      name: userApi.name,
+      password: userApi.password,
+      userType: userApi.userType
+    });
 
     // continue to step 2
     setAuthStep(step => step + 1);
@@ -44,9 +50,9 @@ function App() {
 
     let error = null;
 
-    if (api.email !== credentials.email) {
+    if (credentials.email !== api.email) {
       error = 'email error';
-    } else if (api.password !== credentials.password) {
+    } else if (credentials.password !== api.password) {
       error = 'password error';
     }
 
@@ -56,13 +62,14 @@ function App() {
     }
 
     // correct credentials: login and...
-    // continue to next authStep
+    // continue to next authStep...
+    // while simulating an asynchronous API call
     setTimeout(() => {
       setUser({
         email: credentials.email,
-        name: credentials.name,
+        name: api.name,
         password: credentials.password,
-        userType: credentials.userType
+        userType: api.userType
       });
       
       // continue to step 3
@@ -72,12 +79,6 @@ function App() {
 
       return 'success';
     }, 1500);
-  }
-
-  // COMPLETE AUTHENTICATION PROCESS
-  const completeAuth = () => {
-    // set authStep to 4 (completed step 3)
-    setAuthStep(step => step + 1);
   }
 
   return (
@@ -99,7 +100,7 @@ function App() {
                       : <LoginForm login={login} />
                   }
                 </>
-                : <></>
+                : <Welcome user={user} />
           }
         </div>
       </div>

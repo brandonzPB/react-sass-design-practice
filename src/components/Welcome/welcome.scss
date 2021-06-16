@@ -1,11 +1,8 @@
-#loading__container {
-  margin: 0 auto;
-  width: 70%;
+#welcome__container {
+  margin: 2rem auto;
   text-align: center;
 
-  #loading-text {
-    margin: 0 auto;
-    text-align: center;
+  span {
     font-size: 2rem;
     font-weight: 600;
     font-family: 'Araboto', sans-serif;
@@ -13,7 +10,7 @@
 }
 
 @media only screen and (min-width: 920px) {
-  #loading__container {
-    #loading-text {}
+  #welcome__container {
+    span {}
   }
 }

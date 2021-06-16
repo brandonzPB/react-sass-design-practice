@@ -44,35 +44,39 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="email"
-        onChange={handleChange}
-        placeholder="Email address"
-        style={{
-          backgroundColor: error.field === 'email' ? 'pink' : 'white'
-        }}
-        type="email"
-        value={form.email}
-      />
+    <div id="login__container">
+      <span id="login-header">Great! Now let's get you logged in</span>
 
-      {error.field === 'email' && <span className="error-text">Email not found.</span>}
+      <form onSubmit={handleSubmit}>
+        <input
+          name="email"
+          onChange={handleChange}
+          placeholder="Email address"
+          style={{
+            backgroundColor: error.field === 'email' ? 'pink' : 'none'
+          }}
+          type="email"
+          value={form.email}
+        />
 
-      <input
-        name="password"
-        onChange={handleChange}
-        placeholder="Password"
-        style={{
-          backgroundColor: error.field === 'password' ? 'pink' : 'white'
-        }}
-        type="password"
-        value={form.password}
-      />
+        {error.field === 'email' && <span className="error-text">Email not found.</span>}
 
-      {error.field === 'password' && <span className="error-text">Incorrect password.</span>}
+        <input
+          name="password"
+          onChange={handleChange}
+          placeholder="Password"
+          style={{
+            backgroundColor: error.field === 'password' ? 'pink' : 'none'
+          }}
+          type="password"
+          value={form.password}
+        />
 
-      <button>Login</button>
-    </form>
+        {error.field === 'password' && <span className="error-text">Incorrect password.</span>}
+
+        <button>Login</button>
+      </form>
+    </div>
   )
 }
 
