@@ -1,16 +1,32 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+}
+
 #welcome__container {
-  margin: 2rem auto;
+  margin: 4rem auto 0 auto;
   text-align: center;
 
   span {
     font-size: 2rem;
     font-weight: 600;
     font-family: 'Araboto', sans-serif;
+    animation: fadeIn 2s;
   }
 }
 
 @media only screen and (min-width: 920px) {
   #welcome__container {
+    margin: 8rem auto;
+    text-align: center;
+
     span {}
   }
 }
